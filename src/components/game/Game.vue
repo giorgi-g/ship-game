@@ -50,88 +50,104 @@ export default {
 </script>
 
 <style lang="scss">
-@keyframes sun-glow-1 {
+@keyframes boat-float {
   0% {
-    //transform: scale(0.9);
-    box-shadow: 0 0 0 rgba(255, 176, 88, 0.3),
-      inset 0 0 0 rgba(255, 176, 88, 0.3);
+    transform: translateY(0) rotate(0);
   }
   25% {
-    //transform: scale(1.1);
-    box-shadow: 0 0 26px rgba(255, 176, 88, 0.3),
-      inset 0 0 26px rgba(255, 176, 88, 0.3);
+    transform: translateY(0) rotate(-10deg);
   }
-  45% {
-    //transform: scale(1);
-    box-shadow: 0 0 52px rgba(255, 176, 88, 0.2),
-      inset 0 0 52px rgba(255, 176, 88, 0.2);
+  40% {
+    transform: translateY(4px) rotate(-10deg);
   }
-  65% {
-    //transform: scale(1.2);
-    box-shadow: 0 0 80px rgba(255, 176, 88, 0.1),
-      inset 0 0 80px rgba(255, 176, 88, 0.1);
+  85% {
+    transform: translateY(1px) rotate(10deg);
   }
   100% {
-    //transform: scale(0.9);
-    box-shadow: 0 0 0 rgba(255, 176, 88, 0.3),
-      inset 0 0 0 rgba(255, 176, 88, 0.3);
+    transform: translateY(0) rotate(0);
+  }
+}
+
+@keyframes boat-float-2 {
+  0% {
+    transform: rotate(0deg) translateX(0);
+  }
+  25% {
+    transform: rotate(-7deg) translateX(-20px);
+  }
+  50% {
+    transform: rotate(10deg) translateX(20px);
+  }
+  75% {
+    transform: rotate(-7deg) translateX(20px);
+  }
+  100% {
+    transform: rotate(0deg) translateX(0);
+  }
+}
+
+@keyframes sun-pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes sun-glow-1 {
+  0% {
+    box-shadow: 0 0 0 rgba(252, 160, 84, 0.3), 0 0 0 rgba(252, 160, 84, 0.3);
+  }
+  80% {
+    box-shadow: 0 0 100px rgba(252, 160, 84, 0.3),
+      0 0 100px rgba(252, 160, 84, 0.3);
+  }
+  95% {
+    box-shadow: 0 0 30px transparent, 0 0 30px transparent;
+  }
+  100% {
+    box-shadow: 0 0 0 transparent, 0 0 0 transparent;
   }
 }
 
 @keyframes sun-glow-2 {
   0% {
-    //transform: scale(0.9);
-    box-shadow: 0 0 0 rgba(255, 176, 88, 0.2),
-      inset 0 0 0 rgba(255, 176, 88, 0.2);
+    box-shadow: 0 0 0 rgba(252, 160, 84, 0.2), 0 0 0 rgba(252, 160, 84, 0.2);
   }
-  25% {
-    //transform: scale(1.1);
-    box-shadow: 0 0 16px rgba(255, 176, 88, 0.2),
-      inset 0 0 14px rgba(255, 176, 88, 0.2);
+  80% {
+    box-shadow: 0 0 100px rgba(252, 160, 84, 0.2),
+      0 0 100px rgba(252, 160, 84, 0.2);
   }
-  45% {
-    //transform: scale(1);
-    box-shadow: 0 0 32px rgba(255, 176, 88, 0.2),
-      inset 0 0 32px rgba(255, 176, 88, 0.2);
-  }
-  65% {
-    //transform: scale(1.2);
-    box-shadow: 0 0 16px rgba(255, 176, 88, 0.2),
-      inset 0 0 14px rgba(255, 176, 88, 0.2);
+  95% {
+    box-shadow: 0 0 30px transparent, 0 0 30px transparent;
   }
   100% {
-    //transform: scale(0.9);
-    box-shadow: 0 0 0 rgba(255, 176, 88, 0.2),
-      inset 0 0 0 rgba(255, 176, 88, 0.2);
+    box-shadow: 0 0 0 transparent, 0 0 0 transparent;
   }
 }
 
 @keyframes sun-glow-3 {
   0% {
-    //transform: scale(0.9);
-    box-shadow: 0 0 0 rgba(255, 176, 88, 0.1),
-      inset 0 0 0 rgba(255, 176, 88, 0.1);
+    box-shadow: 0 0 0 rgba(252, 160, 84, 0.1), 0 0 0 rgba(252, 160, 84, 0.1);
   }
-  25% {
-    //transform: scale(1.1);
-    box-shadow: 0 0 16px rgba(255, 176, 88, 0.1),
-      inset 0 0 14px rgba(255, 176, 88, 0.1);
+  80% {
+    box-shadow: 0 0 100px rgba(252, 160, 84, 0.1),
+      0 0 100px rgba(252, 160, 84, 0.1);
   }
-  45% {
-    //transform: scale(1);
-    box-shadow: 0 0 32px rgba(255, 176, 88, 0.1),
-      inset 0 0 32px rgba(255, 176, 88, 0.1);
-  }
-  65% {
-    //transform: scale(1.2);
-    box-shadow: 0 0 16px rgba(255, 176, 88, 0.1),
-      inset 0 0 14px rgba(255, 176, 88, 0.1);
+  95% {
+    box-shadow: 0 0 30px transparent, 0 0 30px transparent;
   }
   100% {
-    //transform: scale(0.9);
-    box-shadow: 0 0 0 rgba(255, 176, 88, 0.1),
-      inset 0 0 0 rgba(255, 176, 88, 0.1);
+    box-shadow: 0 0 0 transparent, 0 0 0 transparent;
   }
+}
+
+.sun {
+  animation: sun-pulse 10s linear infinite;
 }
 
 .sun-glow-1 {
@@ -174,9 +190,14 @@ export default {
 @mixin addAnimationDelay($num, $delay) {
   @for $i from 1 through $num {
     &:nth-child(#{$i}) {
-      animation-delay: #{$i * $delay}s;
+      animation-delay: #{$i * $delay}s !important;
     }
   }
+}
+
+.boat {
+  animation: boat-float 10s linear infinite !important;
+  @include addAnimationDelay(30, 2);
 }
 
 .small-sun-reflexions {
