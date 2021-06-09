@@ -11,6 +11,9 @@
       </div>
 
       <div class="sun">
+        <div class="sun--win-state" v-if="gameState === STATUS_FINISHED">
+          {{ winState }}
+        </div>
         <div class="sun-glow-1"></div>
         <div class="sun-glow-2"></div>
         <div class="sun-glow-3"></div>
@@ -19,14 +22,20 @@
       <Pyramids />
     </div>
     <div class="bottom">
-      <Boat />
-      <Boat />
-      <Boat position="boat--middle" />
+      <Boat
+        :boat="item"
+        v-for="(item, index) of ships"
+        :key="item.id"
+        :index="index"
+        :position="item.position"
+      />
 
       <MainSunReflexions />
 
       <SmallSunReflexions />
     </div>
+
+    <Cannons />
   </div>
 </template>
 
@@ -36,6 +45,10 @@ import Pyramids from "@/components/game/Pyramids";
 import MainSunReflexions from "@/components/game/MainSunReflexions";
 import SmallSunReflexions from "@/components/game/SmallSunReflexions";
 import Boat from "@/components/game/Boat";
+import Cannons from "@/components/game/Cannons";
+import { mapState } from "vuex";
+import { STATUS_FINISHED } from "@/models/constants";
+import gameMixins from "@/mixins/gameMixins";
 
 export default {
   components: {
@@ -43,9 +56,26 @@ export default {
     SmallSunReflexions,
     MainSunReflexions,
     Pyramids,
-    Stars
+    Stars,
+    Cannons
   },
-  name: "Game"
+  name: "Game",
+  data() {
+    return {
+      STATUS_FINISHED: STATUS_FINISHED
+    };
+  },
+  mixins: [gameMixins],
+  computed: {
+    ...mapState({
+      ships: state => state.gameRoom.ships,
+      winState: state => state.gameRoom.winState,
+      gameState: state => state.gameRoom.gameState
+    })
+  },
+  mounted() {
+    this.loadShips();
+  }
 };
 </script>
 
@@ -195,9 +225,20 @@ export default {
   }
 }
 
-.boat {
-  animation: boat-float 10s linear infinite !important;
-  @include addAnimationDelay(30, 2);
+@mixin addAnimationDelayPrefix($suffix, $num, $delay) {
+  @for $i from 1 through $num {
+    &:nth-child(#{$i}) #{$suffix} {
+      animation-delay: #{$i * $delay}s !important;
+    }
+  }
+}
+
+.boat-container {
+  .boat {
+    animation: boat-float 10s linear infinite !important;
+  }
+
+  @include addAnimationDelayPrefix(".boat", 30, 2);
 }
 
 .small-sun-reflexions {

@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "compass-mixins": "^0.12.10",
     "core-js": "^3.6.5",
     "socket.io-client": "^3.0.3",
     "vue": "^2.6.11",

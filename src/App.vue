@@ -11,6 +11,9 @@ export default {
   name: "App",
   components: {
     Game
+  },
+  mounted() {
+    // this.$store.commit('gameRoom/')
   }
 };
 </script>

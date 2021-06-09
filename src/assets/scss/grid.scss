@@ -1,0 +1,40 @@
+.row {
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  width: 100%;
+  flex: 0 0 100%;
+}
+
+$max-grid-size: 12;
+@mixin make-grid($infix) {
+  @for $i from 1 through $max-grid-size {
+    .col-#{$infix}-#{$i} {
+      $grid-size: 100 / 12;
+      $grid-percent: $grid-size * $i * 1%;
+
+      position: relative;
+      -ms-flex: 0 0 $grid-percent;
+      flex: 0 0 $grid-percent;
+      max-width: $grid-percent;
+    }
+  }
+}
+
+@media (max-width: 575px) {
+  @include make-grid("xs");
+}
+
+@media (min-width: 576px) {
+  @include make-grid("sm");
+}
+
+@media (min-width: 768px) {
+  @include make-grid("md");
+}
+
+@media (min-width: 992px) {
+  @include make-grid("lg");
+}
